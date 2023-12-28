@@ -1,10 +1,22 @@
 'use client'
 
-import { FC, useEffect, useState } from "react"
+import { FC, HTMLAttributes, useEffect, useState } from "react"
 import anime from 'animejs'
 import Image from "next/image"
 type SplashProps = {
   finishLoading: () => void
+}
+
+
+
+type Props = HTMLAttributes<HTMLDivElement> & {
+  isMounted: boolean
+} 
+
+const SplashContainer: FC<Props> = (props) => {
+  return (
+    <div {...props}  />
+  )
 }
 
 const Splash: FC<SplashProps> = ({ finishLoading }) => {
@@ -16,13 +28,42 @@ const Splash: FC<SplashProps> = ({ finishLoading }) => {
       complete: () => finishLoading()
     })
 
-    loader.add({
-      targets: '#logo',
-      scale: 1,
-      delay: 0,
-      duration: 500,
-      easing: 'easeInOutExpo',
-     })
+    loader
+      .add({
+        targets: "#logo",
+        delay: 0,
+        scale: 1,
+        duration: 500,
+        easing: "easeInOutExpo",
+      })
+      .add({
+        targets: "#logo",
+        delay: 100,
+        scale: 1.25,
+        duration: 500,
+        easing: "easeInOutExpo",
+      })
+      .add({
+        targets: "#logo",
+        delay: 100,
+        scale: 1,
+        duration: 500,
+        easing: "easeInOutExpo",
+      })
+      .add({
+        targets: "#logo",
+        delay: 100,
+        scale: 1.25,
+        duration: 500,
+        easing: "easeInOutExpo",
+      })
+      .add({
+        targets: "#logo",
+        delay: 100,
+        scale: 1,
+        duration: 500,
+        easing: "easeInOutExpo",
+      })
   }
 
   useEffect(() => {
@@ -31,10 +72,9 @@ const Splash: FC<SplashProps> = ({ finishLoading }) => {
     return () => clearTimeout(timeout);
   }, []);
   return (
-    <div isMouted={isMounted}  className="flex h-screen items-center justify-center">
-
-    <Image id="logo" src={'/vercel.svg'} alt="" width={60} height={60} />  
-    </div>
+    <SplashContainer isMounted={isMounted}  className="flex h-screen items-center justify-center">
+      <Image id="logo" src={'/vercel.svg'} alt="" width={60} height={60} />  
+    </SplashContainer>
   )
 }
 
