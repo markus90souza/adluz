@@ -70,6 +70,7 @@ const Splash: FC<SplashProps> = ({ finishLoading }) => {
     const timeout = setTimeout(() => setIsMounted(true), 10);
     animate();
     return () => clearTimeout(timeout);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <SplashContainer isMounted={isMounted}  className="flex h-screen items-center justify-center">

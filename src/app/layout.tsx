@@ -1,11 +1,11 @@
-"use client"
-
+'use client'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import '@/styles/globals.css'
 import { Splash } from '@/components/splash'
-import { FC, ReactNode, useEffect, useState } from 'react'
-import { usePathname } from 'next/navigation'
+import { FC, ReactNode } from 'react'
+
+import { useSplashScreen } from '@/hooks/useSplashScreen'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -22,17 +22,8 @@ type RootLayoutProps = {
 
 const RootLayout: FC<RootLayoutProps> = ({ children}) => {
 
-  const pathname = usePathname()
-  const isHome = pathname === '/'
-  const [loading, setLoading ] = useState(isHome)
 
-  useEffect(() => {
-
-    if(loading){
-      return
-    }
-
-  },[loading])
+  const { isHome, loading, setLoading } = useSplashScreen()
 
   return (
     <html lang="en">
