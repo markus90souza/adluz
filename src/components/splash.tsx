@@ -3,11 +3,10 @@
 import { FC, HTMLAttributes, useEffect, useState } from "react"
 import anime from 'animejs'
 import Image from "next/image"
+
 type SplashProps = {
   finishLoading: () => void
 }
-
-
 
 type Props = HTMLAttributes<HTMLDivElement> & {
   isMounted: boolean
@@ -18,6 +17,8 @@ const SplashContainer: FC<Props> = (props) => {
     <div {...props}  />
   )
 }
+
+import x from '@/assets/logo.png'
 
 const Splash: FC<SplashProps> = ({ finishLoading }) => {
 
@@ -73,8 +74,8 @@ const Splash: FC<SplashProps> = ({ finishLoading }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <SplashContainer isMounted={isMounted}  className="flex h-screen items-center justify-center">
-      <Image id="logo" src={'/vercel.svg'} alt="" width={60} height={60} />  
+    <SplashContainer isMounted={isMounted}  className="flex h-screen items-center justify-center bg-gray-900">
+      <Image id="logo" src={x} alt="" width={60} height={60} />  
     </SplashContainer>
   )
 }

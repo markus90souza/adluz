@@ -6,6 +6,7 @@ import { Splash } from '@/components/splash'
 import { FC, ReactNode } from 'react'
 
 import { useSplashScreen } from '@/hooks/useSplashScreen'
+import { BottomNav } from '@/components/bottom-nav'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -26,7 +27,7 @@ const RootLayout: FC<RootLayoutProps> = ({ children}) => {
   const { isHome, loading, setLoading } = useSplashScreen()
 
   return (
-    <html lang="en">
+    <html lang="en" className='bg-slate-900'>
       <body className={inter.className}>
         
         {
@@ -34,6 +35,8 @@ const RootLayout: FC<RootLayoutProps> = ({ children}) => {
           {children}
           </>) 
         }
+
+        <BottomNav />
         </body>
     </html>
   )
